@@ -31,9 +31,17 @@ module Clif.Tutorial
 
      -- * Computation
      -- $computation
+
+     -- * Copyright
+     -- $copyright
 )
 where
 import Clif
+
+{- $copyright
+This tutorial is licensed under a 
+<https://creativecommons.org/licenses/by/4.0/ Creative Commons Attribution 4.0 International License>
+-}
 
 {- $intro
     To begin, we just need to import the main module of the library, "Clif".
