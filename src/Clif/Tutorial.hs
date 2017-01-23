@@ -78,7 +78,7 @@ This tutorial is licensed under a
 
        In that case, @'T' a@ for any @'Char' a@ would have the same signature as the character \'t\' in our definition. However, defining a metric for the plain 'Char' is useful for demonstration, since it provides us with pretty printouts.
      
-     - Note that as in the definition for @'Basis' ('Lorentzian' b) a@, we do not actually need to fix the field @ə@ apart from the 'Num' constraint while defining the basis. 
+     - Note that as in the definition for @'Basis' ('Lorentzian' b) a@, we do not actually need to fix the field @a@ apart from the 'Num' constraint while defining the basis. 
 
      - If the metric is not diagonal (@'metric' a b /= 0@ for some @a /= b@), we need to replace the default implementations of the functions 'canonical' and 'basisMul' in the instance with more general implementations. See "Clif.Basis" for details.
      
@@ -103,7 +103,7 @@ This tutorial is licensed under a
 > i = 1 *: "txyz"
     
     Note that the last form using the infix operator '(*:)' is used for the 'Show' instance to produce concise output.
-    p
+    
     Due to the 'Num' instance, we do not usually need to explicitly embed scalars. If we want to be specific, we can write
 
 > answer = 42 :: Clif Char Double
