@@ -6,8 +6,8 @@ license:             MIT
 license-file:        LICENSE
 author:              Matti Eskelinen
 maintainer:          matti.a.eskelinen@gmail.com
--- copyright:           
-category:            Math
+copyright:           (c) 2016-2017 Matti Eskelinen 
+category:            Math, Algebra
 build-type:          Simple
 -- extra-source-files:  
 cabal-version:       >=1.10
@@ -15,6 +15,11 @@ cabal-version:       >=1.10
 source-repository head
   type:     git
   location: git@github.com:maaleske/clif.git
+
+source-repository this
+  type:     git
+  location: git@github.com:maaleske/clif.git
+  tag:      0.1.0.0
 
 library
   exposed-modules:     Clif
