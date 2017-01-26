@@ -72,6 +72,6 @@ prop_scalarProdReversibility = forAll2 (smallClif) scalarProdReversibility
 scalarProdReversibility :: EClif -> EClif -> Bool
 scalarProdReversibility u v = scalarProd u v == scalarProd (rev u) (rev v)
 
--- Template Haskell to generate a TestTree for Tasty from each prod_* property
+-- Template Haskell to generate a TestTree for Tasty from each prop_* property
 tests :: TestTree
 tests = $(testGroupGenerator)

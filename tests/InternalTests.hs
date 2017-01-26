@@ -23,6 +23,6 @@ prop_canon_idempotent a = canon' (canon' a) == canon' a
 prop_rev_inv :: Map [Integer] Integer -> Bool
 prop_rev_inv a = rev' (rev' a) == a
 
--- Template Haskell to generate a TestTree for Tasty from each prod_* property
+-- Template Haskell to generate a TestTree for Tasty from each prop_* property
 tests :: TestTree
 tests = $(testGroupGenerator)

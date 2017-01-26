@@ -56,5 +56,6 @@ prop_ortho_nonortho_id_diag_metric :: ([EInt], Integer) -> ([EInt], Integer) -> 
 prop_ortho_nonortho_id_diag_metric a b = 
     filter ((/=(0::Integer)) . snd) [orthoMul a b] == nonOrthoMul a b
 
+-- Template Haskell to generate a TestTree for Tasty from each prop_* property
 tests :: TestTree
 tests = $(testGroupGenerator)
