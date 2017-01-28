@@ -11,6 +11,10 @@ import Clif.Arbitrary()
 
 -- * Properties of the Clif type and instances
 
+-- vec should equal a blade of 1 vector
+prop_vec_blade :: Euclidean Integer -> Integer -> Bool
+prop_vec_blade e s = vec e s == blade [e] s 
+
 -- Equality should be considered on canonical form for Clifs
 prop_eq_on_canon :: Clif (Euclidean Integer) Integer -> Bool
 prop_eq_on_canon a = canon a == a
