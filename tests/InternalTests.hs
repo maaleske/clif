@@ -27,6 +27,17 @@ prop_canon_idempotent a = canon' (canon' a) == canon' a
 prop_rev_inv :: Map [Integer] Integer -> Bool
 prop_rev_inv a = rev' (rev' a) == a
 
+-- isScalar should be True for these
+prop_isScalar_scalar :: Integer -> Bool 
+prop_isScalar_scalar a = isScalar $ blade (mempty :: [Euclidean Integer]) a
+
+prop_isScalar_vecProd :: Euclidean Integer -> Integer -> Bool
+prop_isScalar_vecProd e s = let v = vec e s in isScalar $ v * v
+
+-- isScalar should be False for these
+prop_isScalar_vec :: Euclidean Integer -> NonZero Integer -> Bool
+prop_isScalar_vec e (NonZero s) = not . isScalar $ vec e s
+
 -- Template Haskell to generate a TestTree for Tasty from each prop_* property
 tests :: TestTree
 tests = $(testGroupGenerator)
