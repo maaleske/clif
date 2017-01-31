@@ -18,6 +18,7 @@ As development continues, some of the definitions here may be exported from the 
 {-# LANGUAGE 
     GeneralizedNewtypeDeriving
   #-} 
+{-# OPTIONS_HADDOCK not-home #-}
 module Clif.Internal where
 
 import Clif.Basis
