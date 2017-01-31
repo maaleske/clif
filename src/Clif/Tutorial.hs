@@ -87,23 +87,31 @@ This tutorial is licensed under a
 
 {- $construction
 
-    Using our 'Char' basis, we can start constructing values of type @'Clif' 'Char' 'Double'@ using the provided constructors. We can start by introducing the vectors needed to represent __Cl__(1,3)(R):
+    Using our 'Char' basis, we can start constructing values of type @'Clif' 'Char' 'Double'@ using the provided constructors. We can start by introducing the vectors needed to represent __Cl__(1,3)(R) using the 'vec' constructor:
 
 > t = vec 't' 1
 > x = vec 'x' 1
 > y = vec 'y' 1
 > z = vec 'z' 1
 
-    To make it specific that we are working in __Cl__(1,3)(R), we can define the /pseudoscalar/ @txyz@. All the following definitions are equivalent:
+    To make it specific that we are working in __Cl__(1,3)(R), we can define the /pseudoscalar/ @txyz@. This can be done in a number of ways:  
 
+    - by multiplying our existing 'Clif's together using either the Clifford or 'wedge' products:
+        
 > i = t * x * y * z
+> i = t /\ x  /\ y /\ z
+
+    - by using the 'blade' constructor or its infix synonym '*:' to explicitly create a blade consisting of the same basis vectors:
 
 > i = blade "txyz" 1
-
 > i = 1 *: "txyz"
     
-    Note that the last form using the infix operator '(*:)' is used for the 'Show' instance to produce concise output.
+    Note that the last form using the infix operator '*:' is used for the 'Show' instance to produce concise output. Each of the previous definitions will yield the following output in GHCI for i:
+
+>>> i
+1.0 *: "txyz"
     
+
     Due to the 'Num' instance, we do not usually need to explicitly embed scalars. If we want to be specific, we can write
 
 > answer = 42 :: Clif Char Double
