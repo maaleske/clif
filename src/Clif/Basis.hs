@@ -93,9 +93,8 @@ nonOrthoMul = (uncurry (orderBasis []) .) . freeMul
 -- Note that this relation holds only for a basis with a diagonal bilinear form, for others use the more general (albeit slower) 'orderBasis'.
 orderOrthoBasis, backOrderOrtho :: Basis b a => [b] -> [b] -> a -> ([b], a)
 orderOrthoBasis pre (a:b:rest) c
-
     -- Vectors are in order: move on.
-    | a < b  = orderOrthoBasis (pre ++ [a]) (b:rest) c
+    | a < b  = orderOrthoBasis (a:pre) (b:rest) c
 
     -- Same vector: simplify using the metric signature for the vector
     | a == b = backOrderOrtho pre rest $ metric a b * c
@@ -103,11 +102,11 @@ orderOrthoBasis pre (a:b:rest) c
     -- Wrong order: flip and back up one step. Since the vectors are
     -- orthogonal, we flip the sign of the geometric product.
     | a > b  = backOrderOrtho pre (b:a:rest) (-c)
-orderOrthoBasis pre rest c = (pre ++ rest, c)
+orderOrthoBasis pre rest c = (reverse (rest ++ pre), c)
 
 -- Backwards gnome sort for orthogonal basis
-backOrderOrtho []  rest c = orderOrthoBasis []         rest            c
-backOrderOrtho pre rest c = orderOrthoBasis (init pre) (last pre:rest) c
+backOrderOrtho (a:pre) rest c = orderOrthoBasis pre (a:rest) c
+backOrderOrtho []  rest c = orderOrthoBasis [] rest c
 
 
 -- | Canonical (ordered) form of a scaled basis blade of vectors
