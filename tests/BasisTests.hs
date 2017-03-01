@@ -35,7 +35,7 @@ prop_orderOrthoBasis_is_freeMul_for_ordered :: Property
 prop_orderOrthoBasis_is_freeMul_for_ordered = forAll ascLists orderOrthoBasis_is_freeMul
 
 orderOrthoBasis_is_freeMul :: ([EInt],[EInt]) -> NonZero Integer -> NonZero Integer -> Bool
-orderOrthoBasis_is_freeMul (a,b) (NonZero c) (NonZero d) = freeMul (a, c) (b, d) == orderOrthoBasis a b (c*d)
+orderOrthoBasis_is_freeMul (a,b) (NonZero c) (NonZero d) = freeMul (a, c) (b, d) == orderOrthoBasis (reverse a) b (c*d)
 
 prop_orderBasis_reverse_ordered_is_nswaps :: Property
 prop_orderBasis_reverse_ordered_is_nswaps = forAll ascList orderBasis_reverse_ordered_is_nswaps
