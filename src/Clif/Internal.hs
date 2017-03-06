@@ -15,8 +15,8 @@ __This module is not intended to be imported by end users and may change drastic
 As development continues, some of the definitions here may be exported from the other modules. Comments and suggestions are welcomed.
 
 -}
-{-# LANGUAGE 
-    GeneralizedNewtypeDeriving
+{-# LANGUAGE
+  , DeriveFunctor
   #-} 
 {-# OPTIONS_HADDOCK not-home #-}
 module Clif.Internal where
