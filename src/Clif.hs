@@ -9,6 +9,7 @@ Portability : POSIX
 This helper module exports the main modules needed to construct and operate on Clifford algebra values. If you just want to use the library for computations, this should be all you need. To get started, read "Clif.Tutorial".
 
 -}
+{-# LANGUAGE Safe #-}
 module Clif
     (
      -- * Construction of a basis

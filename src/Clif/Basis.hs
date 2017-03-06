@@ -15,8 +15,9 @@ Defining a basis is abstracted using the two-parameter typeclass 'Basis'. A 'Bas
 While not strictly necessary for the abstraction, functions 'canonical' and 'basisMul' are included in the class with respective default implementations ('orderOrthoBasis' and 'orthoMul') in order to provide an easy way to override them using a more efficient implementation for a user-supplied basis. Note that the default implementations are only valid for a diagonal metric; Use 'orderBasis' and 'nonOrthoMul' if you define a non-diagonal metric.
 
 -}
-{-# LANGUAGE 
-    MultiParamTypeClasses
+{-# LANGUAGE
+    Safe
+  , MultiParamTypeClasses
   , FlexibleInstances
   , DeriveGeneric 
   #-}

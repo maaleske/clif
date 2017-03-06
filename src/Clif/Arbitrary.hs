@@ -9,6 +9,7 @@ Portability : POSIX
 This module provides (orphan) Arbitrary instances and various other generators for creating random 'Clif's and 'Basis' elements using "Test.QuickCheck".
 
 -}
+{-# LANGUAGE Safe #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 module Clif.Arbitrary 
     (

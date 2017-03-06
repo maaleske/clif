@@ -16,6 +16,7 @@ As development continues, some of the definitions here may be exported from the 
 
 -}
 {-# LANGUAGE
+    Safe
   , DeriveFunctor
   #-} 
 {-# OPTIONS_HADDOCK not-home #-}

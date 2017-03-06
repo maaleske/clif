@@ -11,6 +11,7 @@ This module provides the type 'Clif' for representing the elements of a Clifford
 See /The inner products of geometric algebra/ by Leo Dorst for a concise explanation of the different inner products.
 -}
 {-# LANGUAGE 
+    Safe,
     FlexibleInstances,
     MultiParamTypeClasses
   #-}
