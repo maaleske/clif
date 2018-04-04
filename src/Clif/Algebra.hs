@@ -90,7 +90,10 @@ wedge = contractWith (+)
 -- prop> hodge (E <$> "abc") $ blade [E 'b'] 1 == blade (E <$> "ac") 1 
 --
 hodge :: (Eq a, Basis b a) => [b] -> Clif b a -> Clif b a
-hodge = flip (*) . flip blade (-1)
+hodge bs = flip (*) (sgnm * i)
+    where 
+        i = blade bs 1   -- pseudoscalar times the sign of the metric
+        sgnm = i * rev i -- sign of the metric calculated from the unit pseudoscalar
 
 -- | Projection of Clif x in the direction of Clif y, defined as
 --
