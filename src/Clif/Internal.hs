@@ -86,7 +86,7 @@ instance (Eq a, Basis b a, Fractional a) => Fractional (Clif b a) where
 
 -- * Deconstruction
 
--- | Return a list of the blades and coefficients of a Clif.
+-- | Return a list of the blades and coefficients of a Clif. Note that 'toList' is not an inverse of 'fromList' due to nonuniquess of zeros in the current implementation.
 toList :: Clif b a -> [([b], a)]
 toList = M.toList . unClif
 
