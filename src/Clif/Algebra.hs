@@ -24,6 +24,7 @@ module Clif.Algebra
     , blade, (*:)
     , vec
     , fromList
+    , toList
 
      -- * Geometric algebra operations
     , grade, rev

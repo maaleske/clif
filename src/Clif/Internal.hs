@@ -42,7 +42,6 @@ newtype Clif b a = Clif {unClif :: Map [b] a}
 --
 -- >>> fromList [([], 42), ([E 1, E 2], 1)]
 -- 42 *: [] + 1 *: [E 1,E 2]
---
 fromList :: (Eq a, Basis b a) => [([b], a)] -> Clif b a
 fromList = Clif . canon' . M.fromListWith (+)
 
@@ -84,6 +83,12 @@ instance (Eq a, Basis b a, Fractional a) => Fractional (Clif b a) where
     recip v | isScalar v = fmap recip v
             | otherwise  = revM . recip $ revM v
                 where revM = gMul (rev v)
+
+-- * Deconstruction
+
+-- | Return a list of the blades and coefficients of a Clif.
+toList :: Clif b a -> [([b], a)]
+toList = M.toList . unClif
 
 -- * Operations
 
