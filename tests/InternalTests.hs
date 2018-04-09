@@ -9,6 +9,17 @@ import Clif.Basis
 import Clif.Internal
 import Clif.Arbitrary()
 
+-- * Construction / deconstruction tests
+
+-- fromList . toList == id
+prop_toFrom :: Clif (Euclidean Integer) Integer -> Bool
+prop_toFrom x = x == (fromList . toList) x
+
+-- toList . fromList == id
+-- TODO: Needs fix for unique zero
+--prop_fromTo :: [([Euclidean Integer], Integer)] -> Bool
+--prop_fromTo x = x == (toList . fromList) x
+
 -- * Properties of the Clif type and instances
 
 -- vec should equal a blade of 1 vector
