@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.1.1.0] - 2018-04-10
+
 ### Added
 - `toList` for deconstruction of Clifs
 - Enabled Safe Haskell explicitly
@@ -16,4 +18,5 @@
 
 - First public release
 
-[Unreleased]: https://github.com/maaleske/clif/compare/0.1.0.0...master
+[Unreleased]: https://github.com/maaleske/clif/compare/0.1.1.0...master
+[0.1.1.0]: https://github.com/maaleske/clif/compare/0.1.0.0...0.1.1.0
