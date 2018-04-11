@@ -42,6 +42,8 @@ module Clif.Algebra
      -- * Projections
     , proj
 
+     -- * Experimental
+    , det
     ) where
 import Clif.Basis
 import Clif.Internal
@@ -102,3 +104,15 @@ hodge bs = flip (*) (sgnm * i)
 --
 proj :: (Eq a, Basis b a, Fractional a) => Clif b a -> Clif b a -> Clif b a
 proj x y = (x `lContract` recip y) * y
+
+-- | Experimental definition for a determinant given a pseudoscalar
+det :: (Eq a, Fractional a, Basis b a) => [b] -> Clif b a -> Clif b a
+det bs x = xi / i
+    where i = blade bs 1
+          Ext xi = foldMap (Ext) $ map ((*) x . flip vec 1) bs
+
+newtype Exterior a = Ext a
+
+instance (Eq a, Basis b a) => Monoid (Exterior (Clif b a)) where
+    mappend (Ext a) (Ext b) = Ext (a /\ b)
+    mempty = Ext 1
