@@ -107,15 +107,15 @@ hodge bs = flip (*) (sgnm * i)
 proj :: (Eq a, Basis b a, Fractional a) => Clif b a -> Clif b a -> Clif b a
 proj x y = (x `lContract` recip y) * y
 
--- | Experimental definition for a determinant given a pseudoscalar
-det :: (Eq a, Fractional a, Basis b a) => [b] -> Clif b a -> Clif b a
-det bs x = xi / i
+-- | Experimental definition for a determinant of a function given a pseudoscalar
+det :: (Eq a, Fractional a, Basis b a) => [b] -> (Clif b a -> Clif b a) -> Clif b a
+det bs f = xi / i
     where i = blade bs 1
-          Ext xi = foldMap (Ext) $ map ((*) x . flip vec 1) bs
+          Ext xi = foldMap (Ext . f . flip vec 1) bs
 
 -- | Experimental "characteristic polynomial"
-characteristic :: (Eq a, Fractional a, Basis b a) => [b] -> Clif b a -> Clif b a -> Clif b a
-characteristic bs l x = det bs (l - x)
+characteristic :: (Eq a, Fractional a, Basis b a) => [b] -> Clif b a -> (Clif b a -> Clif b a) -> Clif b a
+characteristic bs l f = det bs ((l -) . f)
 
 newtype Exterior a = Ext a
 
