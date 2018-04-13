@@ -44,6 +44,8 @@ module Clif.Algebra
 
      -- * Experimental
     , det
+    , characteristic
+
     ) where
 import Clif.Basis
 import Clif.Internal
@@ -110,6 +112,10 @@ det :: (Eq a, Fractional a, Basis b a) => [b] -> Clif b a -> Clif b a
 det bs x = xi / i
     where i = blade bs 1
           Ext xi = foldMap (Ext) $ map ((*) x . flip vec 1) bs
+
+-- | Experimental "characteristic polynomial"
+characteristic :: (Eq a, Fractional a, Basis b a) => [b] -> Clif b a -> Clif b a -> Clif b a
+characteristic bs l x = det bs (l - x)
 
 newtype Exterior a = Ext a
 
