@@ -43,6 +43,7 @@ module Clif.Algebra
     , proj
 
      -- * Experimental
+    , expn
     , det
     , characteristic
 
@@ -122,3 +123,11 @@ newtype Exterior a = Ext a
 instance (Eq a, Basis b a) => Monoid (Exterior (Clif b a)) where
     mappend (Ext a) (Ext b) = Ext (a /\ b)
     mempty = Ext 1
+
+-- | Power series approximation of exp up to nth term.
+expn :: (Eq a, Fractional a, Basis b a) => Int -> Clif b a -> Clif b a
+expn n x = sum . take n $ xs 
+    where xs = 1:map (\k -> (x ^ k) / fromIntegral (fac k)) [1..]
+
+fac :: (Enum a, Num a) => Int -> a
+fac = product . flip take [1..]
